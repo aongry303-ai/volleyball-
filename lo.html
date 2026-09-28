@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="lo">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SUN SPARK | ເດີ່ນບານຕີ</title>
+	<link rel="icon"
+		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='16' fill='%23ffd166'/%3E%3Cg stroke='%23e56b2f' stroke-width='5' stroke-linecap='round'%3E%3Cpath d='M32 5v9M32 50v9M5 32h9M50 32h9M13 13l7 7M44 44l7 7M51 13l-7 7M20 44l-7 7'/%3E%3C/g%3E%3C/svg%3E">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+		rel="stylesheet">
+	<style>
+		:root {
+			--ink: #2b211e;
+			--muted: #7d716b;
+			--paper: #fff8ed;
+			--white: #fff;
+			--lime: #ffd166;
+			--teal: #9a431f;
+			--orange: #e56b2f;
+			--line: #f0dfcf;
+			--shadow: 0 22px 50px rgba(112, 57, 25, .12);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: radial-gradient(circle at 90% 0%, #fff1d4 0, transparent 28%), var(--paper);
+			font-family: 'Noto Sans Lao', sans-serif;
+		}
+
+		button,
+		input,
+		select {
+			font: inherit;
+		}
+
+		button {
+			cursor: pointer;
+			border: 0;
+		}
+
+		.app {
+			min-height: 100vh;
+			display: grid;
+			grid-template-columns: 246px 1fr;
+		}
+
+		aside {
+			background: linear-gradient(160deg, #9a431f 0%, #71301d 100%);
+			color: #fff7e8;
+			padding: 28px 20px;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			box-shadow: 12px 0 35px rgba(112, 57, 25, .08);
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-family: Outfit, sans-serif;
+			font-size: 23px;
+			font-weight: 800;
+			letter-spacing: .5px;
+			color: #fff;
+			margin-bottom: 58px;
+		}
+
+		.brand-mark {
+			width: 43px;
+			height: 43px;
+			border-radius: 50%;
+			background: radial-gradient(circle at 50% 50%, #ffe59a 0 38%, var(--lime) 40% 100%);
+			color: var(--teal);
+			display: grid;
+			place-items: center;
+			font-size: 25px;
+			line-height: 1;
+			box-shadow: 0 0 0 5px rgba(255, 209, 102, .16), 0 7px 18px rgba(255, 209, 102, .2);
+		}
+
+		.nav-label {
+			font-size: 11px;
+			color: #91c2b6;
+			text-transform: uppercase;
+			letter-spacing: 1.4px;
+			margin: 0 12px 12px;
+		}
+
+		nav {
+			display: grid;
+			gap: 7px;
+		}
+
+		.nav-btn {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 13px 14px;
+			border-radius: 11px;
+			color: #c4e2d9;
+			background: transparent;
+			text-align: left;
+			transition: .2s;
+		}
+
+		.nav-btn:hover,
+		.nav-btn.active {
+			color: var(--teal);
+			background: var(--lime);
+		}
+
+		.nav-icon {
+			font-size: 18px;
+			width: 20px;
+			text-align: center;
+		}
+
+		.side-note {
+			margin-top: auto;
+			padding: 17px 15px;
+			border: 1px solid rgba(255, 255, 255, .15);
+			border-radius: 15px;
+			background: rgba(255, 255, 255, .06);
+			font-size: 12px;
+			line-height: 1.7;
+			color: #b3d5cc;
+		}
+
+		.side-note strong {
+			color: #fff;
+			display: block;
+			font-size: 13px;
+			margin-bottom: 5px;
+		}
+
+		main {
+			padding: 38px 4.5vw 60px;
+			max-width: 1450px;
+			width: 100%;
+		}
+
+		.topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+			margin-bottom: 34px;
+		}
+
+		.eyebrow {
+			color: var(--orange);
+			font-size: 12px;
+			font-weight: 800;
+			letter-spacing: 1.7px;
+			text-transform: uppercase;
+		}
+
+		h1,
+		h2,
+		h3,
+		p {
+			margin: 0;
+		}
+
+		h1 {
+			font-size: clamp(27px, 3vw, 43px);
+			line-height: 1.2;
+			margin-top: 7px;
+			letter-spacing: -1px;
+		}
+
+		h2 {
+			font-size: 22px;
+		}
+
+		h3 {
+			font-size: 16px;
+		}
+
+		.sub {
+			color: var(--muted);
+			font-size: 13px;
+			margin-top: 10px;
+		}
+
+		.user-area {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.cart-btn {
+			position: relative;
+			color: var(--teal);
+			background: #fff;
+			border: 1px solid var(--line);
+			border-radius: 9px;
+			padding: 10px 13px;
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		.cart-count {
+			display: inline-grid;
+			place-items: center;
+			min-width: 19px;
+			height: 19px;
+			margin-left: 5px;
+			padding: 0 4px;
+			border-radius: 10px;
+			color: var(--teal);
+			background: var(--lime);
+			font-size: 10px;
+		}
+
+		.user-chip {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 8px 13px 8px 8px;
+			border: 1px solid var(--line);
+			background: #fff;
+			border-radius: 30px;
+			font-size: 13px;
+		}
+
+		.avatar {
+			width: 31px;
+			height: 31px;
+			display: grid;
+			place-items: center;
+			border-radius: 50%;
+			color: var(--teal);
+			background: var(--lime);
+			font-weight: 800;
+		}
+
+		.outline-btn,
+		.solid-btn {
+			border-radius: 9px;
+			padding: 11px 16px;
+			font-size: 13px;
+			font-weight: 700;
+			transition: .2s;
+		}
+
+		.outline-btn {
+			color: var(--teal);
+			background: #fff;
+			border: 1px solid var(--line);
+		}
+
+		.outline-btn:hover {
+			border-color: var(--teal);
+		}
+
+		.solid-btn {
+			color: var(--teal);
+			background: var(--lime);
+		}
+
+		.solid-btn:hover {
+			transform: translateY(-1px);
+			filter: brightness(.97);
+		}
+
+		.hero {
+			background: var(--ink);
+			color: #fff;
+			border-radius: 20px;
+			padding: 29px 34px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 25px;
+			overflow: hidden;
+			position: relative;
+			margin-bottom: 28px;
+		}
+
+		.hero:after {
+			content: 'SUN';
+			position: absolute;
+			right: 15px;
+			bottom: -18px;
+			font: 800 110px/1 Outfit, sans-serif;
+			color: rgba(255, 255, 255, .07);
+			letter-spacing: -6px;
+			pointer-events: none;
+		}
+
+		.hero .eyebrow {
+			color: var(--lime);
+		}
+
+		.hero h2 {
+			font-size: 25px;
+			margin: 7px 0 5px;
+		}
+
+		.hero p {
+			color: #c8d5d1;
+			font-size: 13px;
+		}
+
+		.hero-stats {
+			display: flex;
+			gap: 33px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.hero-stat strong {
+			display: block;
+			color: var(--lime);
+			font: 700 31px Outfit, sans-serif;
+		}
+
+		.hero-stat span {
+			font-size: 11px;
+			color: #afc4bf;
+		}
+
+		.section-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+			margin: 28px 0 15px;
+		}
+
+		.section-head .sub {
+			margin: 4px 0 0;
+		}
+
+		.courts {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		.court-card {
+			background: rgba(255, 255, 255, .92);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 21px;
+			box-shadow: 0 8px 22px rgba(112, 57, 25, .06);
+			transition: transform .2s, box-shadow .2s;
+		}
+
+		.court-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 14px 28px rgba(112, 57, 25, .11);
+		}
+
+		.court-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: start;
+			margin-bottom: 19px;
+		}
+
+		.court-name {
+			display: flex;
+			align-items: center;
+			gap: 11px;
+		}
+
+		.court-number {
+			width: 39px;
+			height: 39px;
+			border-radius: 10px;
+			display: grid;
+			place-items: center;
+			background: #e5f5d0;
+			color: var(--teal);
+			font: 700 18px Outfit, sans-serif;
+		}
+
+		.status {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+			color: #39915e;
+			font-size: 11px;
+			font-weight: 700;
+		}
+
+		.status.busy {
+			color: #cf7139;
+		}
+
+		.dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: currentColor;
+		}
+
+		.availability {
+			background: #f5f8f5;
+			border-radius: 10px;
+			padding: 13px 14px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 16px;
+		}
+
+		.availability span {
+			color: var(--muted);
+			font-size: 11px;
+		}
+
+		.availability strong {
+			font-size: 14px;
+		}
+
+		.time-row {
+			display: flex;
+			gap: 6px;
+			flex-wrap: wrap;
+		}
+
+		.time {
+			border: 1px solid var(--line);
+			border-radius: 6px;
+			padding: 5px 8px;
+			color: var(--muted);
+			background: #fff;
+			font-size: 11px;
+		}
+
+		.time.open {
+			color: var(--teal);
+			border-color: #a8ce9a;
+			background: #f4fbea;
+		}
+
+		.products {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.product {
+			background: #fff;
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			overflow: hidden;
+		}
+
+		.product-pic {
+			height: 115px;
+			display: grid;
+			place-items: center;
+			background: #e8f2ee;
+			font-size: 48px;
+		}
+
+		.product:nth-child(2) .product-pic {
+			background: #fff0df
+		}
+
+		.product:nth-child(3) .product-pic {
+			background: #e8e7f4
+		}
+
+		.product-body {
+			padding: 14px;
+		}
+
+		.product-body h3 {
+			margin-bottom: 3px;
+		}
+
+		.product-body p {
+			font-size: 11px;
+			color: var(--muted);
+			margin-bottom: 12px;
+		}
+
+		.price {
+			font: 700 17px Outfit, sans-serif;
+			color: var(--teal);
+		}
+
+		.price small {
+			font: 400 11px 'Noto Sans Lao', sans-serif;
+			color: var(--muted);
+		}
+
+		.product-footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.product {
+			background: #fff;
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			overflow: hidden;
+			box-shadow: 0 7px 18px rgba(112, 57, 25, .05);
+			transition: transform .2s, box-shadow .2s;
+		}
+
+		.product:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 13px 26px rgba(112, 57, 25, .1);
+		}
+
+		.product-pic {
+			height: 125px;
+			display: grid;
+			place-items: center;
+			background: #fff0d4;
+			font-size: 48px;
+		}
+
+		.product:nth-child(2) .product-pic {
+			background: #ffead8
+		}
+
+		.product:nth-child(3) .product-pic {
+			background: #fff5c9
+		}
+
+		.product-body {
+			padding: 16px;
+		}
+
+		.product-body h3 {
+			margin-bottom: 4px;
+		}
+
+		.product-body p {
+			font-size: 11px;
+			color: var(--muted);
+			margin-bottom: 13px;
+		}
+
+		.price {
+			font: 700 17px Outfit, sans-serif;
+			color: var(--teal);
+		}
+
+		.price small {
+			font: 400 11px 'Noto Sans Lao', sans-serif;
+			color: var(--muted);
+		}
+
+		.product-footer {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 10px;
+		}
+
+		.shop-actions {
+			display: flex;
+			gap: 6px;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+
+		.shop-actions .outline-btn {
+			padding: 8px 10px;
+			font-size: 11px;
+		}
+
+		.panel {
+			background: rgba(255, 255, 255, .94);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 23px;
+			box-shadow: 0 8px 22px rgba(112, 57, 25, .05);
+		}
+
+		.form-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 14px;
+			max-width: 650px;
+		}
+
+		label {
+			display: block;
+			font-size: 12px;
+			font-weight: 700;
+			margin-bottom: 7px;
+		}
+
+		input,
+		select {
+			width: 100%;
+			background: #fffaf3;
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			padding: 11px 12px;
+			outline: 0;
+			color: var(--ink);
+		}
+
+		select[multiple] {
+			min-height: 116px;
+		}
+
+		input:focus,
+		select:focus {
+			border-color: var(--teal);
+			box-shadow: 0 0 0 3px rgba(229, 107, 47, .12);
+		}
+
+		.full {
+			grid-column: 1/-1;
+		}
+
+		.product-pic {
+			overflow: hidden;
+		}
+
+		.product-pic img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			object-fit: cover;
+			transition: transform .35s;
+		}
+
+		.product:hover .product-pic img {
+			transform: scale(1.06);
+		}
+
+		.booking-list {
+			margin-top: 22px;
+			display: grid;
+			gap: 9px;
+		}
+
+		.booking-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 14px 15px;
+			background: #fffaf3;
+			border: 1px solid #f1e4d7;
+			border-radius: 9px;
+			font-size: 12px;
+		}
+
+		.booking-row span {
+			color: var(--muted);
+		}
+
+		.tag {
+			padding: 4px 8px;
+			border-radius: 5px;
+			background: #fff0c2;
+			color: #9a5d19;
+			font-size: 10px;
+			font-weight: 700;
+		}
+
+		.cancel-booking {
+			width: 30px;
+			height: 30px;
+			display: grid;
+			place-items: center;
+			border: 1px solid #f0c9bc;
+			border-radius: 7px;
+			color: #c85d3f;
+			background: #fff8f5;
+			font-size: 15px;
+		}
+
+		.cancel-booking:hover {
+			color: #fff;
+			background: #c85d3f;
+		}
+
+		.admin-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 15px;
+		}
+
+		.admin-card {
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			padding: 17px;
+		}
+
+		.admin-card .row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 15px;
+		}
+
+		.toggle {
+			width: 42px;
+			height: 23px;
+			border-radius: 15px;
+			background: #d4ded9;
+			padding: 3px;
+		}
+
+		.toggle.on {
+			background: var(--teal);
+		}
+
+		.toggle i {
+			display: block;
+			width: 17px;
+			height: 17px;
+			border-radius: 50%;
+			background: #fff;
+			transition: .2s;
+		}
+
+		.toggle.on i {
+			transform: translateX(19px);
+		}
+
+		.admin-products {
+			display: grid;
+			gap: 10px;
+			margin-top: 18px;
+		}
+
+		.admin-product-row {
+			display: grid;
+			grid-template-columns: 1fr 145px 105px auto;
+			gap: 10px;
+			align-items: center;
+			padding: 12px;
+			background: #fffaf3;
+			border: 1px solid var(--line);
+			border-radius: 9px;
+		}
+
+		.admin-product-row input {
+			padding: 8px 10px;
+		}
+
+		.admin-add-form {
+			display: grid;
+			grid-template-columns: 1fr 130px 130px 130px;
+			gap: 10px;
+			margin-top: 18px;
+		}
+
+		.admin-add-form .solid-btn {
+			white-space: nowrap;
+		}
+
+		.delete-product {
+			color: #c85d3f;
+			background: #fff8f5;
+			border: 1px solid #f0c9bc;
+			border-radius: 7px;
+			padding: 8px 10px;
+			font-size: 12px;
+		}
+
+		.delete-product:hover {
+			color: #fff;
+			background: #c85d3f;
+		}
+
+		.admin-image-picker {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			grid-column: span 2;
+		}
+
+		.admin-image-picker input[type=file] {
+			padding: 8px;
+		}
+
+		.product-preview {
+			width: 52px;
+			height: 38px;
+			object-fit: cover;
+			border-radius: 6px;
+			border: 1px solid var(--line);
+			display: none;
+		}
+
+		.notice {
+			padding: 12px 14px;
+			border-radius: 8px;
+			background: #fff8df;
+			color: #956d1e;
+			font-size: 12px;
+			margin-top: 14px;
+			display: none;
+		}
+
+		.notice.show {
+			display: block;
+		}
+
+		.modal-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(13, 35, 31, .48);
+			display: none;
+			place-items: center;
+			z-index: 10;
+			padding: 20px;
+		}
+
+		.modal-backdrop.show {
+			display: grid;
+		}
+
+		.modal {
+			background: #fff;
+			border-radius: 17px;
+			padding: 26px;
+			width: min(410px, 100%);
+			box-shadow: var(--shadow);
+		}
+
+		.modal-head {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+
+		.close {
+			background: transparent;
+			color: var(--muted);
+			font-size: 22px;
+		}
+
+		.login-note {
+			font-size: 11px;
+			color: var(--muted);
+			line-height: 1.7;
+			margin-top: 14px;
+		}
+
+		.auth-switch {
+			width: 100%;
+			margin-top: 14px;
+			color: var(--teal);
+			background: transparent;
+			font-size: 12px;
+			text-decoration: underline;
+		}
+
+		.confirm-modal {
+			width: min(430px, 100%);
+			text-align: center;
+		}
+
+		.confirm-icon {
+			width: 58px;
+			height: 58px;
+			display: grid;
+			place-items: center;
+			margin: 0 auto 14px;
+			border-radius: 18px;
+			color: #9a431f;
+			background: #fff0c2;
+			font-size: 28px;
+			box-shadow: inset 0 0 0 7px #fff8e7;
+		}
+
+		.confirm-modal h2 {
+			margin-bottom: 8px;
+		}
+
+		.confirm-message {
+			color: var(--muted);
+			font-size: 13px;
+			line-height: 1.8;
+		}
+
+		.confirm-actions {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+			margin-top: 22px;
+		}
+
+		.confirm-actions button {
+			width: 100%;
+		}
+
+		.danger-btn {
+			color: #fff;
+			background: #c85d3f;
+			border-radius: 9px;
+			padding: 11px 16px;
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		.danger-btn:hover {
+			background: #a84832;
+		}
+
+		.rental-items {
+			display: grid;
+			gap: 9px;
+			margin: 18px 0;
+		}
+
+		.rental-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 12px;
+			padding: 12px;
+			border-radius: 9px;
+			background: #f6f9f6;
+			font-size: 12px;
+		}
+
+		.rental-item small {
+			display: block;
+			color: var(--muted);
+			margin-top: 3px;
+		}
+
+		.rental-total {
+			display: flex;
+			justify-content: space-between;
+			padding-top: 15px;
+			border-top: 1px solid var(--line);
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.cancel-rental {
+			width: 28px;
+			height: 28px;
+			display: grid;
+			place-items: center;
+			border: 1px solid #f0c9bc;
+			border-radius: 7px;
+			color: #c85d3f;
+			background: #fff8f5;
+			font-size: 14px;
+		}
+
+		.cancel-rental:hover {
+			color: #fff;
+			background: #c85d3f;
+		}
+
+		.view {
+			display: none;
+		}
+
+		.view.active {
+			display: block;
+		}
+
+		.toast {
+			position: fixed;
+			bottom: 25px;
+			right: 25px;
+			padding: 13px 18px;
+			color: #fff;
+			background: var(--ink);
+			border-radius: 9px;
+			font-size: 12px;
+			transform: translateY(90px);
+			opacity: 0;
+			transition: .3s;
+			z-index: 20;
+		}
+
+		.toast.show {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		@media(max-width:850px) {
+			.app {
+				grid-template-columns: 1fr
+			}
+
+			aside {
+				min-height: auto;
+				padding: 16px 18px;
+				position: sticky;
+				top: 0;
+				z-index: 5
+			}
+
+			.brand {
+				margin-bottom: 16px
+			}
+
+			.side-note,
+			.nav-label {
+				display: none
+			}
+
+			nav {
+				display: flex;
+				overflow: auto;
+				gap: 5px
+			}
+
+			.nav-btn {
+				width: auto;
+				white-space: nowrap;
+				padding: 9px 11px
+			}
+
+			.nav-btn span:last-child {
+				display: none
+			}
+
+			main {
+				padding: 25px 18px 40px
+			}
+
+			.topbar {
+				align-items: flex-start
+			}
+
+			.user-chip {
+				display: none
+			}
+
+			.hero {
+				align-items: flex-start;
+				flex-direction: column;
+				padding: 24px
+			}
+
+			.hero-stats {
+				gap: 25px
+			}
+
+			.products {
+				grid-template-columns: 1fr
+			}
+
+			.admin-grid {
+				grid-template-columns: 1fr
+			}
+
+			.admin-add-form,
+			.admin-product-row {
+				grid-template-columns: 1fr 1fr
+			}
+
+			.admin-product-row .delete-product {
+				grid-column: 1/-1
+			}
+		}
+
+		@media(max-width:560px) {
+			h1 {
+				font-size: 29px
+			}
+
+			.hero:after {
+				font-size: 70px
+			}
+
+			.courts,
+			.form-grid {
+				grid-template-columns: 1fr
+			}
+
+			.full {
+				grid-column: auto
+			}
+
+			.topbar {
+				margin-bottom: 25px
+			}
+
+			.section-head {
+				align-items: flex-start;
+				gap: 10px;
+				flex-direction: column
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="app">
+		<aside>
+			<div class="brand" title="SUN SPARK"><span class="brand-mark" aria-label="ໄອຄອນຕາເວັນ">☀</span> SUN SPARK
+			</div>
+			<div class="nav-label">ເມນູຫຼັກ</div>
+			<nav>
+				<button class="nav-btn active" data-view="home"><span
+						class="nav-icon">⌂</span><span>ໜ້າຫຼັກ</span></button>
+				<button class="nav-btn" data-view="booking"><span
+						class="nav-icon">▣</span><span>ຈອງເດີ່ນ</span></button>
+				<button class="nav-btn" data-view="shop"><span class="nav-icon">▤</span><span>ອຸປະກອນ</span></button>
+				<button class="nav-btn" id="adminNav" data-view="admin" style="display:none"><span
+						class="nav-icon">⚙</span><span>Admin</span></button>
+			</nav>
+			<div class="side-note"><strong>ເວລາເປີດບໍລິການ</strong>ທຸກມື້ 06:00 - 21:00<br>ຈອງລ່ວງໜ້າໄດ້ 7 ມື້</div>
+		</aside>
+		<main>
+			<header class="topbar">
+				<div>
+					<div class="eyebrow">ສະຖານທີ່ຫຼິ້ນຂອງທ່ານ</div>
+					<h1>ພ້ອມລົງເດີ່ນບໍ?</h1>
+					<p class="sub">ເຊົ່າເດີ່ນບານຕີ ແລະ ອຸປະກອນຄົບຈົບໃນບ່ອນດຽວ</p>
+				</div>
+				<div class="user-area"><button class="cart-btn" id="rentalCartBtn">ລາຍການ <span class="cart-count"
+							id="rentalCount">0</span></button>
+					<div id="userChip" class="user-chip" style="display:none"><span class="avatar">U</span><span
+							id="userName">ຜູ້ໃຊ້</span></div><button class="outline-btn"
+						id="authBtn">ເຂົ້າລະບົບ</button>
+				</div>
+			</header>
+
+			<section class="view active" id="home">
+				<div class="hero">
+					<div>
+						<div class="eyebrow">ລາຄາພິເສດປະຈຳວັນ</div>
+						<h2>ເດີ່ນດີ, ເກມດີ, ມ່ວນດີ</h2>
+						<p>ຈອງເດີ່ນຂອງທ່ານພຽງ 120.000 ກີບ / ຊົ່ວໂມງ</p>
+					</div>
+					<div class="hero-stats">
+						<div class="hero-stat"><strong>02</strong><span>ເດີ່ນມາດຕະຖານ</span></div>
+						<div class="hero-stat"><strong>120K</strong><span>ກີບ / ຊົ່ວໂມງ</span></div>
+					</div>
+				</div>
+				<div class="section-head">
+					<div>
+						<h2>ສະຖານະເດີ່ນມື້ນີ້</h2>
+						<p class="sub">ກວດເບິ່ງເວລາວ່າງແບບ real-time</p>
+					</div><button class="solid-btn" data-go="booking">+ ຈອງເດີ່ນ</button>
+				</div>
+				<div class="courts" id="courtCards"></div>
+				<div class="section-head">
+					<div>
+						<h2>ອຸປະກອນຍອດນິຍົມ</h2>
+						<p class="sub">ເຊົ່າ ຫຼື ຊື້ໄດ້ທີ່ນີ້</p>
+					</div><button class="outline-btn" data-go="shop">ເບິ່ງທັງໝົດ →</button>
+				</div>
+				<div class="products" id="homeProducts"></div>
+			</section>
+
+			<section class="view" id="booking">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">BOOK A COURT</div>
+						<h2>ຈອງເດີ່ນບານຕີ</h2>
+						<p class="sub">ກຳນົດມື້ ແລະ ເວລາທີ່ທ່ານຕ້ອງການ · ປິດບໍລິການ 21:00</p>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="form-grid">
+						<div><label>ເລືອກເດີ່ນ</label><select id="bookCourt">
+								<option value="1">ເດີ່ນ 01 · Indoor</option>
+								<option value="2">ເດີ່ນ 02 · Indoor</option>
+							</select></div>
+						<div><label>ວັນທີ</label><input id="bookDate" type="date"></div>
+						<div><label>ເລືອກເວລາເລີ່ມ</label><select id="bookTime">
+								<option>06:00</option>
+								<option>07:00</option>
+								<option>08:00</option>
+								<option>09:00</option>
+								<option>10:00</option>
+								<option>11:00</option>
+								<option>12:00</option>
+								<option>13:00</option>
+								<option>14:00</option>
+								<option>15:00</option>
+								<option>16:00</option>
+								<option>17:00</option>
+								<option>18:00</option>
+								<option>19:00</option>
+								<option>20:00</option>
+							</select></div>
+						<div><label>ຈຳນວນຊົ່ວໂມງ</label><select id="bookHours">
+								<option value="1">1 ຊົ່ວໂມງ</option>
+								<option value="2">2 ຊົ່ວໂມງ</option>
+								<option value="3">3 ຊົ່ວໂມງ</option>
+							</select></div>
+						<div class="full"
+							style="display:flex;justify-content:space-between;align-items:center;margin-top:8px"><span
+								style="font-size:13px;color:var(--muted)">ລວມຄ່າເດີ່ນ: <strong id="totalPrice"
+									style="font-size:19px;color:var(--teal)">120.000 ກີບ</strong></span><button
+								class="solid-btn" id="bookBtn">ຢືນຢັນການຈອງ</button></div>
+					</div>
+					<div class="notice" id="bookNotice"></div>
+				</div>
+				<div class="section-head">
+					<div>
+						<h2>ການຈອງ/ເຊົ່າຂອງຂ້ອຍ</h2>
+						<p class="sub">ສະແດງທັງເດີ່ນ ແລະ ອຸປະກອນທີ່ເລືອກ</p>
+					</div>
+				</div>
+				<div class="panel booking-list" id="bookingList">
+					<p class="sub">ຍັງບໍ່ມີລາຍການຈອງ</p>
+				</div>
+			</section>
+
+			<section class="view" id="shop">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">GEAR SHOP</div>
+						<h2>ອຸປະກອນບານຕີ</h2>
+						<p class="sub">ຂອງຈຳເປັນຄຸນນະພາບສຳລັບເກມຂອງທ່ານ</p>
+					</div>
+				</div>
+				<div class="products" id="shopProducts"></div>
+			</section>
+
+			<section class="view" id="admin">
+				<div class="section-head">
+					<div>
+						<div class="eyebrow">MANAGEMENT</div>
+						<h2>ຈັດການສະຖານະເດີ່ນ</h2>
+						<p class="sub">ເປີດ / ປິດເດີ່ນ ແລະ ກຳນົດເວລາວ່າງ</p>
+					</div><span class="tag">ADMIN MODE</span>
+				</div>
+				<div class="panel">
+					<div class="admin-grid" id="adminCards"></div>
+					<div class="section-head" style="margin-top:30px">
+						<div>
+							<h2>ຈັດການອຸປະກອນ</h2>
+							<p class="sub">ເພີ່ມບານຕີ ຫຼື ເກີບລຸ້ນໃໝ່ ແລະ ປ່ຽນລາຄາ</p>
+						</div>
+					</div>
+					<div class="admin-add-form"><input id="productName" placeholder="ຊື່ສິນຄ້າ"><select
+							id="productType">
+							<option value="ball">ບານຕີ</option>
+							<option value="shoes">ເກີບ</option>
+						</select><input id="productPrice" type="number" min="0" placeholder="ລາຄາຊື້"><input
+							id="productRent" type="number" min="0" placeholder="ຄ່າເຊົ່າ">
+						<div class="admin-image-picker"><input id="productImageFile" type="file" accept="image/*"><img
+								id="productPreview" class="product-preview" alt="ຕົວຢ່າງຮູບສິນຄ້າ"></div><button
+							class="solid-btn" id="addProductBtn">+ ເພີ່ມສິນຄ້າ</button>
+					</div>
+					<div class="admin-products" id="adminProducts"></div>
+					<div class="notice show" style="margin-top:20px">ບັນທຶກອັດຕະໂນມັດ: ການປ່ຽນແປງຈະຖືກຈື່ໄວ້ໃນ browser
+						ນີ້</div>
+				</div>
+			</section>
+		</main>
+	</div>
+	<div class="modal-backdrop" id="loginModal">
+		<div class="modal">
+			<div class="modal-head">
+				<div>
+					<div class="eyebrow" id="authEyebrow">WELCOME BACK</div>
+					<h2 style="margin-top:5px" id="authTitle">ເຂົ້າລະບົບ</h2>
+				</div><button class="close" id="closeModal">×</button>
+			</div>
+			<div id="loginForm"><label>ຊື່ຜູ້ໃຊ້</label><input id="loginName" placeholder="ເຊັ່ນ: ສົມຊາຍ"
+					style="margin-bottom:13px"><label>ລະຫັດຜ່ານ</label><input id="loginPassword" type="password"
+					placeholder="••••••••"><button class="solid-btn" id="loginBtn"
+					style="width:100%;margin-top:19px">ເຂົ້າສູ່ລະບົບ</button><button class="auth-switch"
+					id="showSignup">ຍັງບໍ່ມີບັນຊີ? ສ້າງບັນຊີ</button>
+				<p class="login-note">Demo admin: ໃຊ້ຊື່ <strong>admin</strong> ແລະ ລະຫັດ <strong>1234</strong>
+					ເພື່ອເຂົ້າໜ້າຈັດການ</p>
+			</div>
+			<div id="signupForm" style="display:none"><label>ຊື່ຜູ້ໃຊ້</label><input id="signupName"
+					placeholder="ເຊັ່ນ: ສົມຊາຍ" style="margin-bottom:13px"><label>ລະຫັດຜ່ານ</label><input
+					id="signupPassword" type="password" placeholder="ຢ່າງໜ້ອຍ 4 ຕົວ"><button class="solid-btn"
+					id="signupBtn" style="width:100%;margin-top:19px">ສ້າງບັນຊີ</button><button class="auth-switch"
+					id="showLogin">ມີບັນຊີແລ້ວ? ເຂົ້າລະບົບ</button></div>
+		</div>
+	</div>
+	<div class="modal-backdrop" id="rentalModal">
+		<div class="modal">
+			<div class="modal-head">
+				<div>
+					<div class="eyebrow">MY ITEMS</div>
+					<h2 style="margin-top:5px">ລາຍການຂອງຂ້ອຍ</h2>
+				</div><button class="close" id="closeRental">×</button>
+			</div>
+			<div class="rental-items" id="rentalItems"></div>
+			<div class="rental-total"><span>ລວມທັງໝົດ</span><strong id="rentalTotal" style="color:var(--teal)">0
+					ກີບ</strong></div><button class="solid-btn" id="confirmRental"
+				style="width:100%;margin-top:20px">ຢືນຢັນລາຍການ</button>
+		</div>
+	</div>
+	<div class="modal-backdrop" id="adminConfirmModal">
+		<div class="modal confirm-modal">
+			<div class="confirm-icon">☀</div>
+			<div class="eyebrow">ADMIN ACTION</div>
+			<h2 id="adminConfirmTitle">ຢືນຢັນການປ່ຽນແປງ</h2>
+			<p class="confirm-message" id="adminConfirmMessage">ກະລຸນາກວດສອບອີກຄັ້ງກ່ອນບັນທຶກ</p>
+			<div class="confirm-actions"><button class="outline-btn" id="cancelAdminConfirm">ຍົກເລີກ</button><button
+					class="danger-btn" id="acceptAdminConfirm">ຢືນຢັນ</button></div>
+		</div>
+	</div>
+	<div class="toast" id="toast"></div>
+	<script>
+		const defaultCourts = [{ id: 1, name: 'ເດີ່ນ 01', type: 'Indoor · ພື້ນຢາງມາດຕະຖານ', open: true, blocked: [] }, { id: 2, name: 'ເດີ່ນ 02', type: 'Indoor · ພື້ນຢາງມາດຕະຖານ', open: true, blocked: ['18:00'] }];
+		const defaultProducts = [
+			{ id: 'mikasa-v200w', image: 'https://i.pinimg.com/1200x/77/fd/cc/77fdcc592d6cad48edd545f874175acf.jpg', name: 'ບານວໍເລ່ຍ Mikasa V200W', desc: 'ບານແຂ່ງຂັນ ຂະໜາດ 5', price: '500.000', rent: '100.000', type: 'ball' },
+			{ id: 'molten-v5m5000', image: 'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=900&q=85', name: 'ບານວໍເລ່ຍ Molten V5M5000', desc: 'ບານຄຸນນະພາບສຳລັບແຂ່ງຂັນ', price: '480.000', rent: '90.000', type: 'ball' },
+			{ id: 'volleyball-net', image: 'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=85', name: 'ຕາໜ່າງບານຕີ', desc: 'ຄຸນນະພາບແຂງແຮງ', price: '450.000', rent: null, type: 'net' },
+			{ id: 'asics-upcourt', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85', name: 'ເກີບບານຕີ ASICS Upcourt', desc: 'ເບົາ, ຍຶດພື້ນດີ', price: '650.000', rent: '200.000', type: 'shoes' },
+			{ id: 'mizuno-wave', image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=85', name: 'ເກີບບານຕີ Mizuno Wave', desc: 'ຮອງຮັບດີ ເໝາະສຳລັບໂດດຕີ', price: '780.000', rent: '250.000', type: 'shoes' }
+		];
+		let products = JSON.parse(localStorage.getItem('sunSparkProducts') || 'null') || defaultProducts;
+		let courts = JSON.parse(localStorage.getItem('spikeCourts') || 'null') || defaultCourts;
+		let bookings = JSON.parse(localStorage.getItem('spikeBookings') || '[]');
+		let rentals = JSON.parse(localStorage.getItem('spikeRentals') || '[]');
+		let accounts = JSON.parse(localStorage.getItem('sunSparkAccounts') || '[]');
+		const hours = ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+		const BOOKING_MAX_HOURS = 3;
+		const MAX_BLOCKED_SLOTS = 3;
+		const BOOKING_CLOSE_HOUR = 21;
+		const money = value => Number(value).toLocaleString('en-US') + ' ກີບ';
+		function sanitizeBlockedHours(blockedTimes) {
+			const unique = [...new Set((blockedTimes || []).filter(time => hours.includes(time)))].sort((a, b) => hours.indexOf(a) - hours.indexOf(b));
+			if (unique.length <= MAX_BLOCKED_SLOTS) return unique;
+			return unique.slice(0, MAX_BLOCKED_SLOTS);
+		}
+		courts = courts.map(court => ({ ...court, blocked: sanitizeBlockedHours(court.blocked) }));
+		function save() { localStorage.setItem('spikeCourts', JSON.stringify(courts)); localStorage.setItem('spikeBookings', JSON.stringify(bookings)); localStorage.setItem('spikeRentals', JSON.stringify(rentals)); localStorage.setItem('sunSparkAccounts', JSON.stringify(accounts)); localStorage.setItem('sunSparkProducts', JSON.stringify(products)); }
+		function showToast(text) { const toast = document.getElementById('toast'); toast.textContent = text; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
+		function addRental(item) { const existing = rentals.find(r => r.id === item.id); if (existing && (item.type === 'gear' || item.type === 'purchase')) { existing.qty += 1 } else if (!existing) { rentals.push({ ...item, qty: item.qty || 1 }) } save(); renderRentals(); showToast(`ເພີ່ມ ${item.name} ໃນລາຍການແລ້ວ`); }
+		function renderRentals() { const items = document.getElementById('rentalItems'); const count = rentals.reduce((sum, item) => sum + item.qty, 0); document.getElementById('rentalCount').textContent = count; items.innerHTML = rentals.length ? rentals.map((item, index) => `<div class="rental-item"><div><strong>${item.name}</strong><small>${item.detail} · ${item.qty} ໜ່ວຍ</small></div><div style="display:flex;align-items:center;gap:10px"><strong style="color:var(--teal)">${money(item.unitPrice * item.qty)}</strong><button class="cancel-rental" data-index="${index}" title="ຍົກເລີກລາຍການ" aria-label="ຍົກເລີກລາຍການ">🗑</button></div></div>`).join('') : '<p class="sub">ຍັງບໍ່ມີລາຍການ. ເລືອກເດີ່ນ ຫຼື ອຸປະກອນເພື່ອເພີ່ມ.</p>'; document.querySelectorAll('.cancel-rental').forEach(button => button.onclick = () => cancelRental(Number(button.dataset.index))); document.getElementById('rentalTotal').textContent = money(rentals.reduce((sum, item) => sum + (item.unitPrice * item.qty), 0)); }
+		function cancelRental(index) { const rental = rentals[index]; if (!rental) return; if (rental.type === 'court' && rental.id) { bookings = bookings.filter(booking => booking.rentalId !== rental.id); } rentals.splice(index, 1); save(); renderBookings(); renderRentals(); showToast('ຍົກເລີກລາຍການແລ້ວ'); }
+		function renderCourts() { document.getElementById('courtCards').innerHTML = courts.map(c => `<article class="court-card"><div class="court-top"><div class="court-name"><div class="court-number">${String(c.id).padStart(2, '0')}</div><div><h3>${c.name}</h3><p class="sub">${c.type}</p></div></div><div class="status ${c.open ? '' : 'busy'}"><i class="dot"></i>${c.open ? 'ວ່າງ' : 'ປິດຊົ່ວຄາວ'}</div></div><div class="availability"><span>ເວລາວ່າງຖັດໄປ</span><strong>${c.open ? (hours.find(h => !c.blocked.includes(h)) || 'ເຕັມແລ້ວ') : 'ບໍ່ເປີດບໍລິການ'}</strong></div><div class="time-row">${hours.slice(0, 15).map(h => `<span class="time ${c.open && !c.blocked.includes(h) ? 'open' : ''}">${h}</span>`).join('')}</div></article>`).join(''); }
+		function productMarkup(p) { return `<article class="product"><div class="product-pic"><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="product-footer"><div><div class="price">${p.price} <small>ກີບ</small></div><small style="color:var(--muted)">ລາຄາຊື້</small></div><div class="shop-actions"><button class="outline-btn buy-btn" data-name="${p.name}" data-price="${p.price}">ຊື້</button>${p.rent ? `<button class="outline-btn rent-btn" data-name="${p.name}" data-rent="${p.rent}">ເຊົ່າ ${p.rent}K</button>` : ''}</div></div></div></article>`; }
+		function renderProducts() { document.getElementById('homeProducts').innerHTML = products.map(productMarkup).slice(0, 3).join(''); document.getElementById('shopProducts').innerHTML = products.map(productMarkup).join(''); document.querySelectorAll('.buy-btn').forEach(btn => btn.onclick = () => addRental({ type: 'purchase', id: `purchase-${btn.dataset.name}`, name: btn.dataset.name, detail: 'ຊື້ / ໜ່ວຍ', unitPrice: Number(btn.dataset.price.replace(/\./g, '')) })); document.querySelectorAll('.rent-btn').forEach(btn => btn.onclick = () => addRental({ type: 'gear', id: `gear-${btn.dataset.name}`, name: btn.dataset.name, detail: 'ເຊົ່າ / ໜ່ວຍ', unitPrice: Number(btn.dataset.rent.replace(/\./g, '')) })); }
+		function renderBookings() { const list = document.getElementById('bookingList'); const gearRentals = rentals.map((item, index) => ({ ...item, rentalIndex: index })).filter(item => item.type === 'gear'); list.innerHTML = bookings.length || gearRentals.length ? [...bookings.map((b, index) => `<div class="booking-row"><div><strong>${b.court}</strong> <span>· ${b.date} · ${b.time} · ${b.hours} ຊົ່ວໂມງ</span></div><div style="display:flex;align-items:center;gap:10px"><span class="tag">ເດີ່ນ</span><button class="cancel-booking" data-index="${index}" title="ຍົກເລີກການຈອງ" aria-label="ຍົກເລີກການຈອງ">🗑</button></div></div>`), ...gearRentals.map(item => `<div class="booking-row"><div><strong>${item.name}</strong> <span>· ${item.detail} · ${item.qty} ໜ່ວຍ</span></div><div style="display:flex;align-items:center;gap:10px"><span class="tag">ອຸປະກອນ</span><button class="cancel-rental" data-index="${item.rentalIndex}" title="ຍົກເລີກລາຍການ" aria-label="ຍົກເລີກລາຍການ">🗑</button></div></div>`)].join('') : '<p class="sub">ຍັງບໍ່ມີລາຍການຈອງ</p>'; document.querySelectorAll('.cancel-booking').forEach(button => button.onclick = () => cancelBooking(Number(button.dataset.index))); document.querySelectorAll('.cancel-rental').forEach(button => button.onclick = () => cancelRental(Number(button.dataset.index))); }
+		function cancelBooking(index) { const booking = bookings[index]; if (!booking) return; bookings.splice(index, 1); if (booking.rentalId) rentals = rentals.filter(item => item.id !== booking.rentalId); save(); renderBookings(); renderRentals(); showToast('ຍົກເລີກການຈອງແລ້ວ'); }
+		let pendingAdminAction = null; const adminConfirmModal = document.getElementById('adminConfirmModal'); function requestAdminConfirmation(title, message, action) { pendingAdminAction = action; document.getElementById('adminConfirmTitle').textContent = title; document.getElementById('adminConfirmMessage').textContent = message; adminConfirmModal.classList.add('show'); } function closeAdminConfirmation() { pendingAdminAction = null; adminConfirmModal.classList.remove('show'); renderAdmin(); } document.getElementById('cancelAdminConfirm').onclick = closeAdminConfirmation; document.getElementById('acceptAdminConfirm').onclick = () => { const action = pendingAdminAction; pendingAdminAction = null; adminConfirmModal.classList.remove('show'); if (action) action(); };
+		function renderAdmin() { document.getElementById('adminCards').innerHTML = courts.map(c => `<div class="admin-card"><div class="row"><div><h3>${c.name}</h3><p class="sub">${c.open ? 'ເປີດໃຫ້ບໍລິການ' : 'ປິດບໍລິການ'}</p></div><button class="toggle ${c.open ? 'on' : ''}" data-id="${c.id}" title="ປ່ຽນສະຖານະ"><i></i></button></div><label>☑ ເລືອກເວລາທີ່ບໍ່ວ່າງ <span style="color:var(--muted)">⌄</span></label><select class="blocked-input" data-id="${c.id}" multiple>${hours.map(hour => '<option value="' + hour + '" ' + (c.blocked.includes(hour) ? 'selected' : '') + '>' + hour + '</option>').join('')}</select></div>`).join(''); document.querySelectorAll('.toggle').forEach(b => b.onclick = () => { const c = courts.find(x => x.id == b.dataset.id); const nextState = !c.open; requestAdminConfirmation(`${c.name}: ຢືນຢັນການ${nextState ? 'ເປີດ' : 'ປິດ'}ເດີ່ນ`, nextState ? 'ເດີ່ນຈະເປີດໃຫ້ລູກຄ້າຈອງ' : 'ເດີ່ນຈະຖືກປິດຊົ່ວຄາວ', () => { c.open = nextState; save(); renderAll(); showToast('ອັບເດດສະຖານະແລ້ວ') }) }); document.querySelectorAll('.blocked-input').forEach(i => { i.onchange = () => { const c = courts.find(x => x.id == i.dataset.id); const rawBlocked = Array.from(i.selectedOptions).map(option => option.value); const nextBlocked = sanitizeBlockedHours(rawBlocked); Array.from(i.options).forEach(option => { option.selected = nextBlocked.includes(option.value); }); if (rawBlocked.length > MAX_BLOCKED_SLOTS) { showToast('ຈຳກັດໄດ້ຫລາຍຊ່ວງ 3 ຊ່ວງ'); } requestAdminConfirmation(`ບລັອກເວລາຂອງ ${c.name}`, `ກຳນົດເວລາບໍ່ວ່າງ ${nextBlocked.length} ຊ່ວງ (ຈຳກັດຢູ່ 3 ຊ່ວງ ແລະ ບໍ່ເກີນ 21:00)`, () => { c.blocked = nextBlocked; save(); renderAll(); showToast('ບັນທຶກເວລາບລັອກແລ້ວ') }); }; }); renderAdminProducts(); }
+		function renderAdminProducts() { const list = document.getElementById('adminProducts'); if (!list) return; list.innerHTML = products.map(p => `<div class="admin-product-row"><strong>${p.name}</strong><input type="number" min="0" value="${Number(p.price.replace(/\./g, ''))}" data-price-id="${p.id}"><input type="number" min="0" value="${p.rent ? Number(p.rent.replace(/\./g, '')) : ''}" placeholder="ຄ່າເຊົ່າ" data-rent-id="${p.id}"><button class="delete-product" data-delete-id="${p.id}">ລົບ</button></div>`).join(''); document.querySelectorAll('[data-price-id]').forEach(input => input.onchange = () => updateProductPrice(input.dataset.priceId, 'price', input.value)); document.querySelectorAll('[data-rent-id]').forEach(input => input.onchange = () => updateProductPrice(input.dataset.rentId, 'rent', input.value)); document.querySelectorAll('[data-delete-id]').forEach(button => button.onclick = () => { products = products.filter(p => p.id !== button.dataset.deleteId); save(); renderAll(); showToast('ລົບສິນຄ້າແລ້ວ') }); }
+		function updateProductPrice(id, field, value) { const product = products.find(p => p.id === id); if (!product) return; const amount = Number(value); product[field] = amount > 0 ? amount.toLocaleString('de-DE') : null; save(); renderProducts(); renderAdminProducts(); showToast('ອັບເດດລາຄາແລ້ວ'); }
+		let selectedProductImage = ''; document.getElementById('productImageFile').onchange = event => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { selectedProductImage = reader.result; const preview = document.getElementById('productPreview'); preview.src = selectedProductImage; preview.style.display = 'block' }; reader.readAsDataURL(file) };
+		document.getElementById('addProductBtn').onclick = () => { const name = document.getElementById('productName').value.trim(); const type = document.getElementById('productType').value; const price = Number(document.getElementById('productPrice').value); const rent = Number(document.getElementById('productRent').value); if (!name || !price) { showToast('ກະລຸນາໃສ່ຊື່ ແລະ ລາຄາ'); return } products.push({ id: `${type}-${Date.now()}`, image: selectedProductImage || (type === 'shoes' ? 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85' : 'https://i.pinimg.com/1200x/77/fd/cc/77fdcc592d6cad48edd545f874175acf.jpg'), name, desc: type === 'shoes' ? 'ເກີບກິລາລຸ້ນໃໝ່' : 'ບານຕີລຸ້ນໃໝ່', price: price.toLocaleString('de-DE'), rent: rent ? rent.toLocaleString('de-DE') : null, type }); save(); renderAll(); document.getElementById('productName').value = ''; document.getElementById('productPrice').value = ''; document.getElementById('productRent').value = ''; document.getElementById('productImageFile').value = ''; document.getElementById('productPreview').style.display = 'none'; selectedProductImage = ''; showToast('ເພີ່ມສິນຄ້າແລ້ວ') };
+		function renderAll() { renderCourts(); renderProducts(); renderBookings(); renderAdmin(); }
+		function go(view) { document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === view)); document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view)); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+		document.querySelectorAll('.nav-btn').forEach(b => b.onclick = () => { if (b.dataset.view === 'admin' && localStorage.getItem('spikeUser')?.toLowerCase() !== 'admin') { showToast('ເຂົ້າສູ່ລະບົບ admin ກ່ອນ'); modal.classList.add('show'); return } go(b.dataset.view) }); document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+		function updateBookingHourOptions() { const time = document.getElementById('bookTime').value; const startHour = Number(time.split(':')[0]); const maxHours = Math.min(3, 21 - startHour); const hourSelect = document.getElementById('bookHours'); const currentHours = Number(hourSelect.value); hourSelect.innerHTML = Array.from({ length: maxHours }, (_, index) => `<option value="${index + 1}">${index + 1} ຊົ່ວໂມງ</option>`).join(''); hourSelect.value = String(Math.min(currentHours || 1, maxHours)); document.getElementById('totalPrice').textContent = money(Number(hourSelect.value) * 120000); }
+		document.getElementById('bookTime').onchange = updateBookingHourOptions; document.getElementById('bookHours').onchange = e => document.getElementById('totalPrice').textContent = money(Number(e.target.value) * 120000); updateBookingHourOptions();
+		document.getElementById('bookDate').value = new Date().toISOString().slice(0, 10); document.getElementById('bookBtn').onclick = () => { if (!localStorage.getItem('spikeUser')) { showLogin(); modal.classList.add('show'); showToast('ກະລຸນາ login ກ່ອນຈອງເດີ່ນ'); return } const date = document.getElementById('bookDate').value; const court = courts.find(c => c.id == document.getElementById('bookCourt').value); const time = document.getElementById('bookTime').value; const count = Number(document.getElementById('bookHours').value); const rentalId = `court-${court.id}-${date}-${time}`; if (!court.open || court.blocked.includes(time)) { document.getElementById('bookNotice').textContent = 'ຂໍອະໄພ, ເວລານີ້ບໍ່ວ່າງ. ກະລຸນາເລືອກເວລາອື່ນ.'; document.getElementById('bookNotice').classList.add('show'); return } bookings.push({ court: court.name, date, time, hours: count, rentalId }); addRental({ type: 'court', id: rentalId, name: court.name, detail: `${date} · ${time} · ${count} ຊົ່ວໂມງ`, unitPrice: count * 120000 }); save(); renderBookings(); document.getElementById('bookNotice').textContent = 'ເພີ່ມເດີ່ນເຂົ້າລາຍການເຊົ່າແລ້ວ! ສາມາດເພີ່ມບານ ຫຼື ອຸປະກອນຕໍ່ໄດ້.'; document.getElementById('bookNotice').classList.add('show'); };
+		const modal = document.getElementById('loginModal'); function updateAdminAccess() { document.getElementById('adminNav').style.display = localStorage.getItem('spikeUser')?.toLowerCase() === 'admin' ? 'flex' : 'none'; } function showLogin() { document.getElementById('loginForm').style.display = 'block'; document.getElementById('signupForm').style.display = 'none'; document.getElementById('authEyebrow').textContent = 'WELCOME BACK'; document.getElementById('authTitle').textContent = 'ເຂົ້າລະບົບ'; } function showSignup() { document.getElementById('loginForm').style.display = 'none'; document.getElementById('signupForm').style.display = 'block'; document.getElementById('authEyebrow').textContent = 'CREATE ACCOUNT'; document.getElementById('authTitle').textContent = 'ສ້າງບັນຊີ'; } document.getElementById('authBtn').onclick = () => { if (localStorage.getItem('spikeUser')) { localStorage.removeItem('spikeUser'); updateAdminAccess(); document.getElementById('userChip').style.display = 'none'; document.getElementById('authBtn').textContent = 'ເຂົ້າລະບົບ'; showToast('ອອກຈາກລະບົບແລ້ວ') } else { showLogin(); modal.classList.add('show') } }; document.getElementById('closeModal').onclick = () => modal.classList.remove('show'); document.getElementById('showSignup').onclick = showSignup; document.getElementById('showLogin').onclick = showLogin; document.getElementById('loginBtn').onclick = () => { const name = document.getElementById('loginName').value.trim(); const pass = document.getElementById('loginPassword').value; const account = accounts.find(item => item.name.toLowerCase() === name.toLowerCase() && item.password === pass); if (name.toLowerCase() === 'admin' && pass === '1234' || account) { localStorage.setItem('spikeUser', name); updateAdminAccess(); document.getElementById('userName').textContent = name.toLowerCase() === 'admin' ? 'Admin' : name; document.getElementById('userChip').style.display = 'flex'; document.getElementById('authBtn').textContent = 'ອອກຈາກລະບົບ'; modal.classList.remove('show'); showToast('ເຂົ້າລະບົບສຳເລັດ') } else showToast('ຊື່ຜູ້ໃຊ້ ຫຼື ລະຫັດບໍ່ຖືກຕ້ອງ') }; document.getElementById('signupBtn').onclick = () => { const name = document.getElementById('signupName').value.trim(); const pass = document.getElementById('signupPassword').value; if (name.toLowerCase() === 'admin' || name.length < 2 || pass.length < 4) { showToast('ກະລຸນາໃສ່ຊື່ ແລະລະຫັດຢ່າງໜ້ອຍ 4 ຕົວ'); return } if (accounts.some(item => item.name.toLowerCase() === name.toLowerCase())) { showToast('ຊື່ນີ້ມີບັນຊີແລ້ວ'); return } accounts.push({ name, password: pass }); save(); document.getElementById('loginName').value = name; document.getElementById('loginPassword').value = pass; showLogin(); showToast('ສ້າງບັນຊີສຳເລັດ, ກະລຸນາ login') };
+		const rentalModal = document.getElementById('rentalModal'); document.getElementById('rentalCartBtn').onclick = () => { if (!localStorage.getItem('spikeUser')) { showLogin(); modal.classList.add('show'); showToast('ກະລຸນາ login ກ່ອນເບິ່ງສະຫຼຸບການເຊົ່າ'); return } renderRentals(); rentalModal.classList.add('show') }; document.getElementById('closeRental').onclick = () => rentalModal.classList.remove('show'); document.getElementById('confirmRental').onclick = () => { if (!localStorage.getItem('spikeUser')) { rentalModal.classList.remove('show'); showLogin(); modal.classList.add('show'); return } if (!rentals.length) { showToast('ຍັງບໍ່ມີລາຍການເຊົ່າ'); return } rentalModal.classList.remove('show'); showToast('ຢືນຢັນລາຍການເຊົ່າແລ້ວ'); };
+		renderAll(); renderRentals(); const savedUser = localStorage.getItem('spikeUser'); updateAdminAccess(); if (savedUser) { document.getElementById('userName').textContent = savedUser.toLowerCase() === 'admin' ? 'Admin' : savedUser; document.getElementById('userChip').style.display = 'flex'; document.getElementById('authBtn').textContent = 'ອອກຈາກລະບົບ'; }
+	</script>
+</body>
+
+</html>
